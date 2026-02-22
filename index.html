@@ -10,189 +10,6 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
 <style>
-  /* Profile Glow Effect */
-.glow-container {
-  position: relative;
-  width: 230px;
-  height: 230px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Rotating Glow Layer */
-.glow-container::before {
-  content: "";
-  position: absolute;
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  background: linear-gradient(45deg, #00ff88, #00c3ff, #00ff88);
-  filter: blur(25px);
-  animation: rotateGlow 6s linear infinite;
-  z-index: 0;
-  opacity: 0.8;
-}
-
-/* Profile Image */
-.glow-container img {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid #111;
-  position: relative;
-  z-index: 2;
-}
-
-/* Smooth Rotation */
-@keyframes rotateGlow {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-  /* Glowing Rotating Circle */
-.glow-container {
-  position: relative;
-  width: 230px;
-  height: 230px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.glow-container::before {
-  content: "";
-  position: absolute;
-  width: 230px;
-  height: 230px;
-  border-radius: 50%;
-  background: conic-gradient(#00ff88, #00c3ff, #ff00cc, #00ff88);
-  animation: rotateGlow 4s linear infinite;
-  z-index: 0;
-}
-
-.glow-container::after {
-  content: "";
-  position: absolute;
-  width: 210px;
-  height: 210px;
-  background: #111; /* background color of your site */
-  border-radius: 50%;
-  z-index: 1;
-}
-
-.glow-container img {
-  position: relative;
-  width: 190px;
-  height: 190px;
-  border-radius: 50%;
-  object-fit: cover;
-  z-index: 2;
-}
-
-/* Rotation Animation */
-@keyframes rotateGlow {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-  /* ABOUT LAYOUT */
-.about-wrapper{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:50px;
-  flex-wrap:wrap;
-  padding:40px;
-  max-width:1200px;
-  margin:0 auto;
-}
-
-/* IMAGE SIDE */
-.about-image{
-  perspective:1000px;
-}
-
-.about-glow{
-  width:260px;
-  height:260px;
-  border-radius:50%;
-  position:relative;
-  animation:float 4s ease-in-out infinite;
-}
-
-.about-glow::before{
-  content:"";
-  position:absolute;
-  width:100%;
-  height:100%;
-  border-radius:50%;
-  background:conic-gradient(#00ff88, transparent, #00ff88);
-  animation:spin 4s linear infinite;
-  filter:blur(20px);
-}
-
-.about-glow img{
-  width:220px;
-  height:220px;
-  border-radius:50%;
-  position:absolute;
-  top:20px;
-  left:20px;
-  object-fit:cover;
-}
-
-/* RIGHT CONTENT */
-.about-content{
-  display:flex;
-  flex-direction:column;
-  gap:30px;
-}
-
-.about-box, .skills-box{
-  background:#0d1a21;
-  padding:25px;
-  border-radius:20px;
-  box-shadow:0 0 25px #00ff88;
-  width:350px;
-  transition:0.4s;
-}
-
-.about-box:hover, .skills-box:hover{
-  transform:translateY(-10px);
-  box-shadow:0 0 40px #00ff88,0 0 80px #00ff88;
-}
-
-.about-box h3,
-.skills-box h3{
-  color:#00ff88;
-  margin-bottom:15px;
-  text-align:center;
-}
-
-.about-box p{
-  color:#ccc;
-  margin-bottom:10px;
-  line-height:1.7;
-}
-
-/* SKILLS */
-.skill{
-  margin-bottom:12px;
-}
-
-.progress{
-  background:#111;
-  height:8px;
-  border-radius:10px;
-  overflow:hidden;
-}
-
-.progress-bar{
-  height:100%;
-  background:#00ff88;
-  box-shadow:0 0 15px #00ff88;
-}
-  
 /* RESET */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;scroll-behavior:smooth;}
 body{background:#000;color:white;overflow:hidden;cursor:none;}
@@ -214,7 +31,52 @@ body::before{
 /* PARTICLES */
 canvas{position:fixed;top:0;left:0;z-index:-1;}
 
-/* HERO */
+/* HERO & IMAGE GLOW */
+.image{perspective:1000px;}
+.glow{
+  width:320px;height:320px;border-radius:50%;position:relative;animation:float 4s ease-in-out infinite;transition:0.6s;
+}
+.glow:hover{transform:rotateY(15deg) rotateX(10deg);}
+.glow::before{content:"";position:absolute;width:100%;height:100%;border-radius:50%;background:conic-gradient(#00ff88,transparent,#00ff88);animation:spin 3s linear infinite;filter:blur(25px);}
+.glow img{width:280px;height:280px;border-radius:50%;position:absolute;top:20px;left:20px;object-fit:cover;}
+
+/* About section glow (slightly different) */
+.about-glow {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  position: relative;
+  animation: floatAbout 6s ease-in-out infinite;
+  transition:0.6s;
+}
+.about-glow:hover { transform: rotateY(8deg) rotateX(5deg); }
+.about-glow::before {
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  background: conic-gradient(#00ff88, transparent, #00c3ff, #00ff88);
+  animation: spinAbout 8s linear infinite;
+  filter: blur(30px);
+}
+.about-glow img {
+  width: 260px;
+  height: 260px;
+  border-radius:50%;
+  position:absolute;
+  top:20px;
+  left:20px;
+  object-fit:cover;
+}
+
+/* Float & Spin Animations */
+@keyframes spin{100%{transform:rotate(360deg);}}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-20px);}}
+@keyframes spinAbout{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+@keyframes floatAbout{0%,100%{transform:translateY(0);}50%{transform:translateY(-15px);}}
+
+/* HERO SECTION */
 .hero{display:flex;justify-content:space-between;align-items:center;min-height:100vh;padding:120px 8%;flex-wrap:wrap;}
 .content h1{font-size:55px;}
 .typing{color:#00ff88;font-size:28px;margin-top:10px;height:35px;}
@@ -224,75 +86,14 @@ canvas{position:fixed;top:0;left:0;z-index:-1;}
 .social a:hover{transform:scale(1.3);}
 .btn{display:inline-block;margin-top:20px;background:#00ff88;padding:12px 30px;border-radius:30px;color:black;font-weight:600;text-decoration:none;box-shadow:0 0 40px #00ff88;transition:0.3s;}
 .btn:hover{transform:scale(1.1);box-shadow:0 0 50px #00ff88,0 0 80px #00ff88;}
-
-/* 3D IMAGE */
-.image{perspective:1000px;}
-.glow{width:320px;height:320px;border-radius:50%;position:relative;animation:float 4s ease-in-out infinite;transition:0.6s;}
-.glow:hover{transform:rotateY(15deg) rotateX(10deg);}
-.glow::before{content:"";position:absolute;width:100%;height:100%;border-radius:50%;background:conic-gradient(#00ff88,transparent,#00ff88);animation:spin 3s linear infinite;filter:blur(25px);}
-.glow img{width:280px;height:280px;border-radius:50%;position:absolute;top:20px;left:20px;object-fit:cover;}
-@keyframes spin{100%{transform:rotate(360deg);} }
-@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-20px);}}
-
-/* CURSOR GLOW */
-.cursor{position:fixed;width:20px;height:20px;border-radius:50%;background:#00ff88;box-shadow:0 0 20px #00ff88,0 0 40px #00ff88;pointer-events:none;transform:translate(-50%,-50%);z-index:2000;}
-
-/* PAGE CONTAINER */
-.page-container{
-  perspective:1500px;
-  position:relative;
-  width:100%;
-  min-height:100vh;
-}
-.page{
-  position:absolute;
-  width:100%;
-  height:100%;
-  top:0; left:0;
-  opacity:0;
-  transform:rotateY(90deg) scale(0.9);
-  transform-origin:center;
-  transition:all 0.8s ease-in-out;
-  pointer-events:none;
-}
-.page.active{
-  opacity:1;
-  transform:rotateY(0deg) scale(1);
-  pointer-events:auto;
-  box-shadow:0 0 50px #00ff88;
-}
-
-/* HEADINGS */
+.page-container{perspective:1500px;position:relative;width:100%;min-height:100vh;}
+.page{position:absolute;width:100%;height:100%;top:0;left:0;opacity:0;transform:rotateY(90deg) scale(0.9);transform-origin:center;transition:all 0.8s ease-in-out;pointer-events:none;}
+.page.active{opacity:1;transform:rotateY(0deg) scale(1);pointer-events:auto;box-shadow:0 0 50px #00ff88;}
 h2{color:#00ff88;text-align:center;margin-bottom:50px;font-size:36px;}
 
-/* PROJECTS */
-.projects-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;max-width:1200px;margin:0 auto;}
-.project-card{
-  background:#0d1a21;
-  padding:20px;
-  border-radius:15px;
-  box-shadow:0 0 20px #00ff88;
-  transition:0.4s;
-  position:relative;
-  overflow:hidden;
-}
-.project-card::before{
-  content:"";
-  position:absolute;
-  top:0; left:-100%;
-  width:100%;
-  height:100%;
-  background:linear-gradient(120deg,#00ff88,#00ffff,#ff00ff,#00ff88);
-  transform:skewX(-20deg);
-  transition:0.7s;
-}
-.project-card:hover::before{ left:200%; }
-.project-card img{ width:100%; border-radius:10px; margin-bottom:15px; transition:0.4s; }
-.project-card:hover img{ transform:scale(1.05); }
-.project-card h3{margin-bottom:10px;color:#fff;}
-.project-card p{color:#ccc;margin-bottom:10px;}
-.view-btn{ text-decoration:none; color:#000; background:#00ff88; padding:10px 20px; border-radius:30px; font-weight:600; display:inline-block; box-shadow:0 0 20px #00ff88,0 0 40px #00ff88; transition:0.3s; }
-.view-btn:hover{ transform:scale(1.1); box-shadow:0 0 30px #00ff88,0 0 60px #00ff88; }
+/* ABOUT CONTENT */
+.about-wrapper, .about-section{display:flex;justify-content:center;align-items:center;gap:50px;flex-wrap:wrap;padding:40px;max-width:1200px;margin:0 auto;}
+.about-content{max-width:550px;line-height:1.8;color:#ccc;font-size:16px;}
 
 /* SERVICES */
 .services-container{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;max-width:1000px;margin:0 auto;}
@@ -301,17 +102,34 @@ h2{color:#00ff88;text-align:center;margin-bottom:50px;font-size:36px;}
 .service-card i{font-size:30px;color:#00ff88;margin-bottom:10px;display:block;}
 .service-card h4{margin-top:10px;}
 
+/* PROJECTS */
+.projects-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;max-width:1200px;margin:0 auto;}
+.project-card{background:#0d1a21;padding:20px;border-radius:15px;box-shadow:0 0 20px #00ff88;transition:0.4s;position:relative;overflow:hidden;}
+.project-card::before{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(120deg,#00ff88,#00ffff,#ff00ff,#00ff88);transform:skewX(-20deg);transition:0.7s;}
+.project-card:hover::before{ left:200%; }
+.project-card img{ width:100%; border-radius:10px; margin-bottom:15px; transition:0.4s; }
+.project-card:hover img{ transform:scale(1.05); }
+.project-card h3{margin-bottom:10px;color:#fff;}
+.project-card p{color:#ccc;margin-bottom:10px;}
+.view-btn{ text-decoration:none; color:#000; background:#00ff88; padding:10px 20px; border-radius:30px; font-weight:600; display:inline-block; box-shadow:0 0 20px #00ff88,0 0 40px #00ff88; transition:0.3s; }
+.view-btn:hover{ transform:scale(1.1); box-shadow:0 0 30px #00ff88,0 0 60px #00ff88; }
+
 /* CONTACT */
 .contact-form{max-width:500px;margin:0 auto;display:flex;flex-direction:column;gap:20px;}
 .contact-form input, .contact-form textarea{padding:12px 15px;border-radius:8px;border:none;outline:none;font-size:16px;}
 .contact-form button{padding:12px 15px;border:none;border-radius:8px;background:#00ff88;color:#000;font-weight:600;cursor:pointer;transition:0.3s;}
 .contact-form button:hover{box-shadow:0 0 30px #00ff88,0 0 50px #00ff88;transform:scale(1.05);}
 
+/* CURSOR GLOW */
+.cursor{position:fixed;width:20px;height:20px;border-radius:50%;background:#00ff88;box-shadow:0 0 20px #00ff88,0 0 40px #00ff88;pointer-events:none;transform:translate(-50%,-50%);z-index:2000;}
+
 /* RESPONSIVE */
 @media(max-width:900px){
   .hero{flex-direction:column;text-align:center;}
   .glow{width:250px;height:250px;}
   .glow img{width:210px;height:210px;}
+  .about-glow{width:250px;height:250px;}
+  .about-glow img{width:210px;height:210px;}
   .projects-container{grid-template-columns:1fr;}
   .services-container{flex-direction:column;align-items:center;}
 }
@@ -335,186 +153,134 @@ h2{color:#00ff88;text-align:center;margin-bottom:50px;font-size:36px;}
 </header>
 
 <div class="page-container">
-<!-- HERO -->
-<section id="home" class="page active hero">
-  <div class="content">
-    <h1>Hi, I'm <span>Gayathri Botta</span></h1>
-    <div class="typing" id="typing"></div>
-
-    <p>
-      I am a passionate Full Stack Web Development Intern focused on building
-      responsive, interactive, and modern web applications with clean UI and smooth animations.
-    </p>
-
-    <div class="social">
-      <a href="https://www.linkedin.com/in/Gayathri Botta" target="_blank">
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <a href="https://www.instagram.com/gayathri.botta6" target="_blank">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="https://github.com/GayathriBotta" target="_blank">
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
-
-    <div class="buttons">
-      <a href="#" data-target="projects" class="btn">View Projects</a>
-      <a href="resumee.pdf" download class="btn secondary">Download Resume</a>
-    </div>
-  </div>
-
-  <div class="image">
-    <div class="glow">
-      <img src="profile.jpeg" alt="Gayathri Profile">
-    </div>
-  </div>
-</section>
-<!-- HERO -->
-<section id="home" class="page active hero">
-  <div class="content">
-    <h1>Hi, I'm <span>Gayathri Botta</span></h1>
-    <div class="typing" id="typing"></div>
-
-    <p>
-      I am a passionate Full Stack Web Development Intern focused on building
-      responsive, interactive, and modern web applications with clean UI and smooth animations.
-    </p>
-
-    <div class="social">
-      <a href="https://www.linkedin.com/in/yourprofile" target="_blank">
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <a href="https://www.instagram.com/yourprofile" target="_blank">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="https://github.com/GayathriBotta" target="_blank">
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
-
-    <div class="buttons">
-      <a href="#" data-target="projects" class="btn">View Projects</a>
-      <a href="resumee.pdf" download class="btn secondary">Download Resume</a>
-    </div>
-  </div>
-
-  <div class="image">
-    <div class="glow">
-      <img src="profile.jpeg" alt="Gayathri Profile">
-    </div>
-  </div>
-</section>
- 
-<!-- ABOUT -->
-<section id="about" class="page">
-  <h2>About Me</h2>
-
-  <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:40px;max-width:1000px;margin:0 auto;">
-
-    <!-- Profile Image -->
-   <div class="glow-container">
-  <img src="profile.png" alt="Gayathri Botta">
-</div>
-
-    <!-- About Content -->
-    <div style="max-width:550px;line-height:1.8;color:#ccc;font-size:16px;">
-      
-      <p>
-        Hello! I’m <strong>Gayathri Botta</strong>, a passionate and dedicated aspiring Full Stack Web Developer.
-        I enjoy transforming ideas into clean, responsive, and user-friendly web applications.
-      </p>
+  <!-- HERO -->
+  <section id="home" class="page active hero">
+    <div class="content">
+      <h1>Hi, I'm <span>Gayathri Botta</span></h1>
+      <div class="typing" id="typing"></div>
 
       <p>
-        I have a strong interest in modern web technologies and love building interactive,
-        visually engaging websites with a focus on performance and user experience.
-        I continuously work on improving my skills by building real-world projects and
-        exploring new tools in frontend and backend development.
+        I am a passionate Full Stack Web Development Intern focused on building
+        responsive, interactive, and modern web applications with clean UI and smooth animations.
       </p>
 
-      <p>
-        My goal is to grow as a developer, contribute to impactful projects,
-        and create digital experiences that are both functional and aesthetically pleasing.
-      </p>
-
-      <!-- Social Links -->
-      <div style="margin-top:20px;">
-        <a href="https://www.linkedin.com/in/your-link" target="_blank" style="margin-right:15px;color:#00ff88;text-decoration:none;">LinkedIn</a>
-        <a href="https://github.com/GayathriBotta" target="_blank" style="margin-right:15px;color:#00ff88;text-decoration:none;">GitHub</a>
-        <a href="https://www.instagram.com/your-link" target="_blank" style="color:#00ff88;text-decoration:none;">Instagram</a>
+      <div class="social">
+        <a href="https://www.linkedin.com/in/GayathriBotta" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/gayathri.botta6" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://github.com/GayathriBotta" target="_blank"><i class="fab fa-github"></i></a>
       </div>
 
-      <!-- Resume Button -->
-      <a href="resume.pdf" download
-         style="display:inline-block;margin-top:25px;padding:10px 20px;background:#00ff88;color:#000;border-radius:5px;text-decoration:none;font-weight:bold;">
-         Download Resume
-      </a>
-
+      <div class="buttons">
+        <a href="#" data-target="projects" class="btn">View Projects</a>
+        <a href="resumee.pdf" download class="btn secondary">Download Resume</a>
+      </div>
     </div>
-  </div>
-</section>
 
-<!-- SERVICES -->
-<section id="services" class="page">
-  <h2>My Services</h2>
-  <div class="services-container">
-    <div class="service-card"><i class="fas fa-code"></i><h4>Web Development</h4></div>
-    <div class="service-card"><i class="fas fa-paint-brush"></i><h4>UI/UX Design</h4></div>
-    <div class="service-card"><i class="fas fa-cogs"></i><h4>Creative Coding</h4></div>
-    <div class="service-card"><i class="fas fa-laptop-code"></i><h4>3D Web Animations</h4></div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects" class="page">
-  <h2>My Projects</h2>
-  <div class="projects-container">
-    <div class="project-card">
-      <img src="chatbot-preview.png" alt="Chatbot Project">
-      <h3>Interactive Chatbot</h3>
-      <p>A smart AI-powered chatbot with chat history, typing indicators, and PDF-based answers.</p>
-      <a href="http://127.0.0.1:5500/open_ai_trail.html" target="_blank" class="view-btn">View Project</a>
+    <div class="image">
+      <div class="glow">
+        <img src="profile.jpeg" alt="Gayathri Profile">
+      </div>
     </div>
-    <div class="project-card">
-      <img src="portfolio-preview.png" alt="Portfolio Project">
-      <h3>3D Portfolio Website</h3>
-      <p>A fully interactive portfolio with glowing animations, 3D effects, and smooth transitions.</p>
-      <a href="http://127.0.0.1:5500/Gayathri Botta portfolio.html" target="_blank" class="view-btn">View Project</a>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="page">
+    <h2>About Me</h2>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:40px;max-width:1000px;margin:0 auto;">
+      
+      <!-- Profile Image with unique About glow -->
+      <div class="image">
+        <div class="about-glow">
+          <img src="profile.jpeg" alt="Gayathri Botta">
+        </div>
+      </div>
+
+      <!-- About Content -->
+      <div class="about-content">
+        <p>
+          Hello! I’m <strong>Gayathri Botta</strong>, a passionate and dedicated aspiring Full Stack Web Developer.
+          I enjoy transforming ideas into clean, responsive, and user-friendly web applications.
+        </p>
+
+        <p>
+          I have a strong interest in modern web technologies and love building interactive,
+          visually engaging websites with a focus on performance and user experience.
+          I continuously work on improving my skills by building real-world projects and
+          exploring new tools in frontend and backend development.
+        </p>
+
+        <p>
+          My goal is to grow as a developer, contribute to impactful projects,
+          and create digital experiences that are both functional and aesthetically pleasing.
+        </p>
+
+        <!-- Social Links -->
+        <div style="margin-top:20px;">
+          <a href="https://www.linkedin.com/in/your-link" target="_blank" style="margin-right:15px;color:#00ff88;text-decoration:none;">LinkedIn</a>
+          <a href="https://github.com/GayathriBotta" target="_blank" style="margin-right:15px;color:#00ff88;text-decoration:none;">GitHub</a>
+          <a href="https://www.instagram.com/your-link" target="_blank" style="color:#00ff88;text-decoration:none;">Instagram</a>
+        </div>
+
+        <!-- Resume Button -->
+        <a href="resume.pdf" download
+           style="display:inline-block;margin-top:25px;padding:10px 20px;background:#00ff88;color:#000;border-radius:5px;text-decoration:none;font-weight:bold;">
+           Download Resume
+        </a>
+      </div>
     </div>
-    <div class="project-card">
-      <img src="plant-watering-preview.png" alt="Smart Plant Watering Project">
-      <h3>Smart Plant Watering System</h3>
-      <p>Automatic plant watering system using soil moisture sensors and IoT for smart gardening.</p>
-      <a href="http://127.0.0.1:5500/automatic%20plant%20watering%20system.docx" target="_blank" class="view-btn">View Project</a>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="page">
+    <h2>My Services</h2>
+    <div class="services-container">
+      <div class="service-card"><i class="fas fa-code"></i><h4>Web Development</h4></div>
+      <div class="service-card"><i class="fas fa-paint-brush"></i><h4>UI/UX Design</h4></div>
+      <div class="service-card"><i class="fas fa-cogs"></i><h4>Creative Coding</h4></div>
+      <div class="service-card"><i class="fas fa-laptop-code"></i><h4>3D Web Animations</h4></div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- CONTACT -->
-<section id="contact" class="page">
-  <h2>Contact Me</h2>
+  <!-- PROJECTS -->
+  <section id="projects" class="page">
+    <h2>My Projects</h2>
+    <div class="projects-container">
+      <div class="project-card">
+        <img src="chatbot-preview.png" alt="Chatbot Project">
+        <h3>Interactive Chatbot</h3>
+        <p>A smart AI-powered chatbot with chat history, typing indicators, and PDF-based answers.</p>
+        <a href="http://127.0.0.1:5500/open_ai_trail.html" target="_blank" class="view-btn">View Project</a>
+      </div>
+      <div class="project-card">
+        <img src="portfolio-preview.png" alt="Portfolio Project">
+        <h3>3D Portfolio Website</h3>
+        <p>A fully interactive portfolio with glowing animations, 3D effects, and smooth transitions.</p>
+        <a href="http://127.0.0.1:5500/Gayathri Botta portfolio.html" target="_blank" class="view-btn">View Project</a>
+      </div>
+      <div class="project-card">
+        <img src="plant-watering-preview.png" alt="Smart Plant Watering Project">
+        <h3>Smart Plant Watering System</h3>
+        <p>Automatic plant watering system using soil moisture sensors and IoT for smart gardening.</p>
+        <a href="http://127.0.0.1:5500/automatic%20plant%20watering%20system.docx" target="_blank" class="view-btn">View Project</a>
+      </div>
+    </div>
+  </section>
 
-  <form class="contact-form">
-    <input type="text" placeholder="Your Name" required>
-    <input type="email" placeholder="Your Email" required>
-    <textarea placeholder="Your Message" rows="5" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
+  <!-- CONTACT -->
+  <section id="contact" class="page">
+    <h2>Contact Me</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
 
-  <!-- Direct Contact Info -->
-  <div class="contact-info">
-    <p><strong>Email:</strong> 
-      <a href="mailto:v2083199@gmail.com">v2083199@gmail.com</a>
-    </p>
-
-    <p><strong>GitHub:</strong> 
-      <a href="https://github.com/GayathriBotta" target="_blank">
-        github.com/GayathriBotta
-      </a>
-    </p>
-  </div>
-</section>
-
+    <div class="contact-info" style="text-align:center;margin-top:20px;">
+      <p><strong>Email:</strong> <a href="mailto:v2083199@gmail.com">v2083199@gmail.com</a></p>
+      <p><strong>GitHub:</strong> <a href="https://github.com/GayathriBotta" target="_blank">github.com/GayathriBotta</a></p>
+    </div>
+  </section>
 </div>
 
 <script>
@@ -538,41 +304,4 @@ type();
 // Particles
 const canvas=document.getElementById("particles");
 const ctx=canvas.getContext("2d");
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-let particles=[];
-for(let k=0;k<80;k++){
-  particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,size:Math.random()*3,speedX:(Math.random()-0.5),speedY:(Math.random()-0.5)});
-}
-function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle="#00ff88";
-  particles.forEach(p=>{
-    p.x+=p.speedX;p.y+=p.speedY;
-    if(p.x<0||p.x>canvas.width)p.speedX*=-1;
-    if(p.y<0||p.y>canvas.height)p.speedY*=-1;
-    ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fill();
-  });
-  requestAnimationFrame(animate);
-}
-animate();
-window.addEventListener("resize",()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
-
-// Cursor
-const cursor=document.querySelector(".cursor");
-document.addEventListener("mousemove",(e)=>{cursor.style.left=e.pageX+"px";cursor.style.top=e.pageY+"px";});
-
-// Page Flip Navigation
-const navLinks=document.querySelectorAll("header nav a, .btn[data-target]");
-const pages=document.querySelectorAll(".page");
-navLinks.forEach(link=>{
-  link.addEventListener("click",(e)=>{
-    e.preventDefault();
-    const targetId=link.getAttribute("data-target");
-    pages.forEach(p=>p.classList.remove("active"));
-    document.getElementById(targetId).classList.add("active");
-  });
-});
-</script>
-</body>
-</html>
+canvas.width=window.innerWidth
