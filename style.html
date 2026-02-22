@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root{
+    --green:#0f3d36;
+    --dark:#0b2c27;
+    --gold:#c6a14a;
+    --white:#ffffff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:var(--green);
+    color:var(--white);
+}
+
+/* HERO */
+.hero{
+    display:flex;
+    height:100vh;
+}
+
+.hero-left{
+    width:40%;
+    background:var(--dark);
+    padding:80px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.hero-left h1{
+    font-size:70px;
+    line-height:70px;
+    font-weight:700;
+}
+
+.hero-left p{
+    margin-top:30px;
+    color:var(--gold);
+    font-weight:600;
+}
+
+.hero-right{
+    width:60%;
+}
+
+.hero-right img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* EXPERIENCE */
+.experience{
+    display:flex;
+    padding:100px 80px;
+    gap:50px;
+}
+
+.exp-left{
+    width:50%;
+}
+
+.exp-left h2{
+    color:var(--gold);
+    margin-bottom:30px;
+}
+
+.exp-item{
+    margin-bottom:30px;
+    border-left:3px solid var(--gold);
+    padding-left:15px;
+}
+
+.exp-item span{
+    color:var(--gold);
+    font-size:14px;
+}
+
+.exp-right{
+    width:50%;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.exp-right img{
+    width:100%;
+    border:3px solid var(--gold);
+}
+
+/* PROJECTS */
+.projects{
+    padding:100px 80px;
+    background:var(--dark);
+}
+
+.projects h2{
+    text-align:center;
+    margin-bottom:40px;
+    color:var(--gold);
+}
+
+.project-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.project-grid img{
+    width:100%;
+    border:3px solid var(--gold);
+}
+
+/* THANK YOU */
+.thankyou{
+    height:60vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:var(--green);
+}
+
+.thankyou h1{
+    font-size:80px;
+    color:var(--gold);
+    text-align:center;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+    .hero{
+        flex-direction:column;
+    }
+    .hero-left,.hero-right{
+        width:100%;
+    }
+    .experience{
+        flex-direction:column;
+    }
+    .exp-left,.exp-right{
+        width:100%;
+    }
+    .project-grid{
+        grid-template-columns:1fr;
+    }
+}
+/* GOLD DECORATIVE CIRCLES */
+body::before{
+    content:"";
+    position:fixed;
+    width:600px;
+    height:600px;
+    border:4px solid #c6a14a;
+    border-radius:50%;
+    top:-250px;
+    right:-250px;
+    opacity:0.3;
+    z-index:-1;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:400px;
+    height:400px;
+    border:3px solid #e0c27b;
+    border-radius:50%;
+    bottom:-200px;
+    left:-200px;
+    opacity:0.2;
+    z-index:-1;
+}
+
+/* VERTICAL TEXT STYLE */
+.vertical-text{
+    position:absolute;
+    right:10px;
+    top:50%;
+    transform:rotate(90deg);
+    letter-spacing:4px;
+    font-size:14px;
+    color:#c6a14a;
+}
+
+/* SMOOTH FADE ANIMATION */
+section{
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s ease;
+}
+
+section.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* IMAGE HOVER EFFECT */
+.hero-right img,
+.exp-right img,
+.project-grid img{
+    transition:0.4s;
+}
+
+.hero-right img:hover,
+.exp-right img:hover,
+.project-grid img:hover{
+    transform:scale(1.03);
+}
+
+/* GOLD LINE DECORATION */
+.exp-item::before{
+    content:"";
+    position:absolute;
+    width:50px;
+    height:2px;
+    background:#c6a14a;
+    left:-53px;
+    top:10px;
+}

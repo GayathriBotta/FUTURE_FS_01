@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)file:///C:/Users/akula/OneDrive/Desktop/FUTURE_FS_01/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gayathri Botta | Ultra Pro Portfolio</title>
+
+<!-- Fonts & Icons -->
+<link href="./Gayathri Botta portfolio_files/css2" rel="stylesheet">
+<link href="./Gayathri Botta portfolio_files/all.min.css" rel="stylesheet">
+
+<style>
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;scroll-behavior:smooth;}
+body{background:#000;color:white;overflow:hidden;cursor:none;}
+
+/* GLASS NAVBAR */
+header{
+  position:fixed;width:100%;display:flex;justify-content:space-between;padding:20px 8%;background:rgba(0,0,0,0.3);backdrop-filter:blur(10px);z-index:1000;
+}
+header .logo{color:#00ff88;font-weight:600;font-size:20px;}
+header nav a{color:white;margin-left:25px;text-decoration:none;transition:0.3s;padding:8px 15px;border-radius:5px;}
+header nav a:hover{background:#00ff88;color:#000;box-shadow:0 0 15px #00ff88;}
+
+/* BACKGROUND GLOW */
+body::before{
+  content:"";position:fixed;width:200%;height:200%;background:radial-gradient(circle at 20% 20%, #00ff88 0%, transparent 40%),radial-gradient(circle at 80% 80%, #00ff88 0%, transparent 40%);animation:moveBg 12s linear infinite;z-index:-2;
+}
+@keyframes moveBg{0%{transform:translate(0,0) rotate(0deg);}50%{transform:translate(-10%,-10%) rotate(180deg);}100%{transform:translate(0,0) rotate(360deg);}}
+
+/* PARTICLES */
+canvas{position:fixed;top:0;left:0;z-index:-1;}
+
+/* HERO */
+.hero{display:flex;justify-content:space-between;align-items:center;min-height:100vh;padding:120px 8%;flex-wrap:wrap;}
+.content h1{font-size:55px;}
+.typing{color:#00ff88;font-size:28px;margin-top:10px;height:35px;}
+.content p{margin:20px 0;max-width:500px;color:#ccc;}
+.social{margin-top:20px;}
+.social a{color:#00ff88;font-size:22px;margin-right:20px;transition:0.3s;}
+.social a:hover{transform:scale(1.3);}
+.btn{display:inline-block;margin-top:20px;background:#00ff88;padding:12px 30px;border-radius:30px;color:black;font-weight:600;text-decoration:none;box-shadow:0 0 40px #00ff88;transition:0.3s;}
+.btn:hover{transform:scale(1.1);box-shadow:0 0 50px #00ff88,0 0 80px #00ff88;}
+
+/* 3D IMAGE */
+.image{perspective:1000px;}
+.glow{width:320px;height:320px;border-radius:50%;position:relative;animation:float 4s ease-in-out infinite;transition:0.6s;}
+.glow:hover{transform:rotateY(15deg) rotateX(10deg);}
+.glow::before{content:"";position:absolute;width:100%;height:100%;border-radius:50%;background:conic-gradient(#00ff88,transparent,#00ff88);animation:spin 3s linear infinite;filter:blur(25px);}
+.glow img{width:280px;height:280px;border-radius:50%;position:absolute;top:20px;left:20px;object-fit:cover;}
+@keyframes spin{100%{transform:rotate(360deg);} }
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-20px);}}
+
+/* CURSOR GLOW */
+.cursor{position:fixed;width:20px;height:20px;border-radius:50%;background:#00ff88;box-shadow:0 0 20px #00ff88,0 0 40px #00ff88;pointer-events:none;transform:translate(-50%,-50%);z-index:2000;}
+
+/* PAGE CONTAINER */
+.page-container{
+  perspective:1500px;
+  position:relative;
+  width:100%;
+  min-height:100vh;
+}
+.page{
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0; left:0;
+  opacity:0;
+  transform:rotateY(90deg) scale(0.9);
+  transform-origin:center;
+  transition:all 0.8s ease-in-out;
+  pointer-events:none;
+}
+.page.active{
+  opacity:1;
+  transform:rotateY(0deg) scale(1);
+  pointer-events:auto;
+  box-shadow:0 0 50px #00ff88;
+}
+
+/* HEADINGS */
+h2{color:#00ff88;text-align:center;margin-bottom:50px;font-size:36px;}
+
+/* PROJECTS */
+.projects-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;max-width:1200px;margin:0 auto;}
+.project-card{
+  background:#0d1a21;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 0 20px #00ff88;
+  transition:0.4s;
+  position:relative;
+  overflow:hidden;
+}
+.project-card::before{
+  content:"";
+  position:absolute;
+  top:0; left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(120deg,#00ff88,#00ffff,#ff00ff,#00ff88);
+  transform:skewX(-20deg);
+  transition:0.7s;
+}
+.project-card:hover::before{ left:200%; }
+.project-card img{ width:100%; border-radius:10px; margin-bottom:15px; transition:0.4s; }
+.project-card:hover img{ transform:scale(1.05); }
+.project-card h3{margin-bottom:10px;color:#fff;}
+.project-card p{color:#ccc;margin-bottom:10px;}
+.view-btn{ text-decoration:none; color:#000; background:#00ff88; padding:10px 20px; border-radius:30px; font-weight:600; display:inline-block; box-shadow:0 0 20px #00ff88,0 0 40px #00ff88; transition:0.3s; }
+.view-btn:hover{ transform:scale(1.1); box-shadow:0 0 30px #00ff88,0 0 60px #00ff88; }
+
+/* SERVICES */
+.services-container{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;max-width:1000px;margin:0 auto;}
+.service-card{background:#0d1a21;padding:20px 30px;border-radius:15px;box-shadow:0 0 20px #00ff88;transition:0.3s;min-width:180px;text-align:center;}
+.service-card:hover{transform:translateY(-10px);box-shadow:0 0 30px #00ff88,0 0 50px #00ff88;}
+.service-card i{font-size:30px;color:#00ff88;margin-bottom:10px;display:block;}
+.service-card h4{margin-top:10px;}
+
+/* CONTACT */
+.contact-form{max-width:500px;margin:0 auto;display:flex;flex-direction:column;gap:20px;}
+.contact-form input, .contact-form textarea{padding:12px 15px;border-radius:8px;border:none;outline:none;font-size:16px;}
+.contact-form button{padding:12px 15px;border:none;border-radius:8px;background:#00ff88;color:#000;font-weight:600;cursor:pointer;transition:0.3s;}
+.contact-form button:hover{box-shadow:0 0 30px #00ff88,0 0 50px #00ff88;transform:scale(1.05);}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero{flex-direction:column;text-align:center;}
+  .glow{width:250px;height:250px;}
+  .glow img{width:210px;height:210px;}
+  .projects-container{grid-template-columns:1fr;}
+  .services-container{flex-direction:column;align-items:center;}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" style="left: 817px; top: 107px;"></div>
+<canvas id="particles" width="1298" height="726"></canvas>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">GAYATHRI BOTTA</div>
+  <nav>
+    <a href="file:///C:/Users/akula/OneDrive/Desktop/FUTURE_FS_01/index.html#" data-target="home">Home</a>
+    <a href="file:///C:/Users/akula/OneDrive/Desktop/FUTURE_FS_01/index.html#" data-target="about">About</a>
+    <a href="file:///C:/Users/akula/OneDrive/Desktop/FUTURE_FS_01/index.html#" data-target="services">Services</a>
+    <a href="file:///C:/Users/akula/OneDrive/Desktop/FUTURE_FS_01/index.html#" data-target="projects">Projects</a>
+    <a href="file:///C:/Users/akula/OneDrive/Desktop/FUTURE_FS_01/index.html#" data-target="contact">Contact</a>
+  </nav>
+</header>
+
+<div class="page-container">
+
+<!-- HERO -->
+<section id="home" class="page hero">
+  <div class="content">
+    <h1>Hello, I'm <span>Gayathri</span></h1>
+    <div class="typing" id="typing">Crea</div>
+    <p>I am a <span>student and enthusiastic web developer</span> passionate about creating modern, interactive, 3D websites with smooth animations and glowing UI designs.</p>
+    <div class="social">
+      <a href="https://www.linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.instagram.com/yourprofile" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://github.com/yourprofile" target="_blank"><i class="fab fa-github"></i></a>
+    </div>
+    <a href="file:///C:/Users/akula/OneDrive/Desktop/FUTURE_FS_01/index.html#" data-target="projects" class="btn">Explore Projects</a>
+  </div>
+  <div class="image">
+    <div class="glow">
+      <img src="file:///C:/Users/akula/OneDrive/Desktop/FUTURE_FS_01/profile.png" alt="Profile">
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="page">
+  <h2>About Me</h2>
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:40px;max-width:1000px;margin:0 auto;">
+    <div class="image">
+      <div class="glow" style="width:220px;height:220px;">
+        <img src="file:///C:/Users/akula/OneDrive/Desktop/FUTURE_FS_01/profile.png" alt="Profile" style="width:180px;height:180px;">
+      </div>
+    </div>
+    <div style="max-width:500px;color:#ccc;">
+      <p>
+        Hi! I am <strong>Gayathri Botta</strong>, a passionate student of web development.
+        I love learning new technologies and building <span style="color:#00ff88;">interactive 3D websites</span>
+        and modern UI designs. I am enthusiastic, creative, and always eager to explore the latest trends in web development.
+      </p>
+      <div class="social" style="margin-top:20px;">
+        <a href="https://www.linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/yourprofile" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://github.com/yourprofile" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+      <a href="file:///C:/Users/akula/OneDrive/Desktop/FUTURE_FS_01/resume.pdf" download="" class="btn" style="margin-top:20px;display:inline-block;">Download Resume</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="page">
+  <h2>My Services</h2>
+  <div class="services-container">
+    <div class="service-card"><i class="fas fa-code"></i><h4>Web Development</h4></div>
+    <div class="service-card"><i class="fas fa-paint-brush"></i><h4>UI/UX Design</h4></div>
+    <div class="service-card"><i class="fas fa-cogs"></i><h4>Creative Coding</h4></div>
+    <div class="service-card"><i class="fas fa-laptop-code"></i><h4>3D Web Animations</h4></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="page active">
+  <h2>My Projects</h2>
+  <div class="projects-container">
+    <div class="project-card">
+      <img src="file:///C:/Users/akula/OneDrive/Desktop/FUTURE_FS_01/chatbot-preview.png" alt="Chatbot Project">
+      <h3>Interactive Chatbot</h3>
+      <p>A smart AI-powered chatbot with chat history, typing indicators, and PDF-based answers.</p>
+      <a href="http://127.0.0.1:5500/open_ai_trail.html" target="_blank" class="view-btn">View Project</a>
+    </div>
+    <div class="project-card">
+      <img src="file:///C:/Users/akula/OneDrive/Desktop/FUTURE_FS_01/portfolio-preview.png" alt="Portfolio Project">
+      <h3>3D Portfolio Website</h3>
+      <p>A fully interactive portfolio with glowing animations, 3D effects, and smooth transitions.</p>
+      <a href="file:///C:/Users/akula/OneDrive/Desktop/FUTURE_FS_01/portfolio.html" target="_blank" class="view-btn">View Project</a>
+    </div>
+    <div class="project-card">
+      <img src="file:///C:/Users/akula/OneDrive/Desktop/FUTURE_FS_01/plant-watering-preview.png" alt="Smart Plant Watering Project">
+      <h3>Smart Plant Watering System</h3>
+      <p>Automatic plant watering system using soil moisture sensors and IoT for smart gardening.</p>
+      <a href="file:///C:/Users/akula/OneDrive/Desktop/FUTURE_FS_01/plant-watering.html" target="_blank" class="view-btn">View Project</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="page">
+  <h2>Contact Me</h2>
+  <form class="contact-form">
+    <input type="text" placeholder="Your Name" required="">
+    <input type="email" placeholder="Your Email" required="">
+    <textarea placeholder="Your Message" rows="5" required=""></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+</div>
+
+<script>
+// Typing animation
+const words=["Frontend Developer","UI Designer","Creative Coder"];
+let i=0,j=0,current="",deleting=false;
+const typing=document.getElementById("typing");
+function type(){
+  current=words[i];
+  if(deleting){
+    typing.textContent=current.substring(0,j--);
+    if(j<0){deleting=false;i=(i+1)%words.length;}
+  }else{
+    typing.textContent=current.substring(0,j++); 
+    if(j>current.length){deleting=true;}
+  }
+  setTimeout(type,deleting?80:120);
+}
+type();
+
+// Particles
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+let particles=[];
+for(let k=0;k<80;k++){
+  particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,size:Math.random()*3,speedX:(Math.random()-0.5),speedY:(Math.random()-0.5)});
+}
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle="#00ff88";
+  particles.forEach(p=>{
+    p.x+=p.speedX;p.y+=p.speedY;
+    if(p.x<0||p.x>canvas.width)p.speedX*=-1;
+    if(p.y<0||p.y>canvas.height)p.speedY*=-1;
+    ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fill();
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+window.addEventListener("resize",()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
+
+// Cursor
+const cursor=document.querySelector(".cursor");
+document.addEventListener("mousemove",(e)=>{cursor.style.left=e.pageX+"px";cursor.style.top=e.pageY+"px";});
+
+// Page Flip Navigation
+const navLinks=document.querySelectorAll("header nav a, .btn[data-target]");
+const pages=document.querySelectorAll(".page");
+navLinks.forEach(link=>{
+  link.addEventListener("click",(e)=>{
+    e.preventDefault();
+    const targetId=link.getAttribute("data-target");
+    pages.forEach(p=>p.classList.remove("active"));
+    document.getElementById(targetId).classList.add("active");
+  });
+});
+</script>
+
+</body></html>
