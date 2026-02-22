@@ -10,73 +10,104 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
 <style>
-  /* ABOUT SECTION */
-.about-container{
+  /* ABOUT LAYOUT */
+.about-wrapper{
   display:flex;
   justify-content:center;
   align-items:center;
-  gap:40px;
+  gap:50px;
+  flex-wrap:wrap;
+  padding:40px;
   max-width:1200px;
   margin:0 auto;
-  padding:40px;
-  flex-wrap:wrap;
 }
 
-.about-card, .skills-card{
+/* IMAGE SIDE */
+.about-image{
+  perspective:1000px;
+}
+
+.about-glow{
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  position:relative;
+  animation:float 4s ease-in-out infinite;
+}
+
+.about-glow::before{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  background:conic-gradient(#00ff88, transparent, #00ff88);
+  animation:spin 4s linear infinite;
+  filter:blur(20px);
+}
+
+.about-glow img{
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  position:absolute;
+  top:20px;
+  left:20px;
+  object-fit:cover;
+}
+
+/* RIGHT CONTENT */
+.about-content{
+  display:flex;
+  flex-direction:column;
+  gap:30px;
+}
+
+.about-box, .skills-box{
   background:#0d1a21;
-  padding:30px;
+  padding:25px;
   border-radius:20px;
   box-shadow:0 0 25px #00ff88;
-  transition:0.5s;
   width:350px;
+  transition:0.4s;
 }
 
-.about-card:hover, .skills-card:hover{
-  transform:translateY(-15px) rotateY(5deg);
-  box-shadow:0 0 40px #00ff88, 0 0 80px #00ff88;
+.about-box:hover, .skills-box:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 40px #00ff88,0 0 80px #00ff88;
 }
 
-.about-card h3,
-.skills-card h3{
+.about-box h3,
+.skills-box h3{
   color:#00ff88;
-  margin-bottom:20px;
+  margin-bottom:15px;
   text-align:center;
 }
 
-.about-card p{
+.about-box p{
   color:#ccc;
-  line-height:1.8;
-  margin-bottom:15px;
+  margin-bottom:10px;
+  line-height:1.7;
 }
 
 /* SKILLS */
 .skill{
-  margin-bottom:15px;
-}
-
-.skill span{
-  font-size:14px;
+  margin-bottom:12px;
 }
 
 .progress{
   background:#111;
   height:8px;
   border-radius:10px;
-  margin-top:5px;
   overflow:hidden;
 }
 
 .progress-bar{
   height:100%;
   background:#00ff88;
-  box-shadow:0 0 10px #00ff88,0 0 20px #00ff88;
-  animation:glowSkill 2s infinite alternate;
+  box-shadow:0 0 15px #00ff88;
 }
-
-@keyframes glowSkill{
-  from{box-shadow:0 0 5px #00ff88;}
-  to{box-shadow:0 0 20px #00ff88;}
-}
+  
 /* RESET */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;scroll-behavior:smooth;}
 body{background:#000;color:white;overflow:hidden;cursor:none;}
@@ -342,6 +373,62 @@ h2{color:#00ff88;text-align:center;margin-bottom:50px;font-size:36px;}
       </div>
     </div>
 
+  </div>
+</section>
+  <!-- ABOUT SECTION -->
+<section id="about" class="page">
+  <h2>About Me</h2>
+
+  <div class="about-wrapper">
+
+    <!-- LEFT SIDE IMAGE -->
+    <div class="about-image">
+      <div class="about-glow">
+        <img src="profile.jpeg" alt="Gayathri Botta">
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE CONTENT -->
+    <div class="about-content">
+
+      <div class="about-box">
+        <h3>Who I Am</h3>
+        <p>
+          I am <strong>Gayathri Botta</strong>, a passionate Full Stack Web Development Intern
+          focused on building modern, responsive, and interactive web applications.
+        </p>
+        <p>
+          I enjoy creating futuristic UI designs, smooth animations,
+          and performance-optimized websites.
+        </p>
+      </div>
+
+      <div class="skills-box">
+        <h3>Technical Skills</h3>
+
+        <div class="skill">
+          <p>HTML</p>
+          <div class="progress"><div class="progress-bar" style="width:90%"></div></div>
+        </div>
+
+        <div class="skill">
+          <p>CSS</p>
+          <div class="progress"><div class="progress-bar" style="width:85%"></div></div>
+        </div>
+
+        <div class="skill">
+          <p>JavaScript</p>
+          <div class="progress"><div class="progress-bar" style="width:75%"></div></div>
+        </div>
+
+        <div class="skill">
+          <p>React.js</p>
+          <div class="progress"><div class="progress-bar" style="width:60%"></div></div>
+        </div>
+
+      </div>
+
+    </div>
   </div>
 </section>
 
