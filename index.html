@@ -10,57 +10,9 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
 <style>
-    .project-card{
-  background:#0d1a21;
-  padding:20px;
-  border-radius:15px;
-  box-shadow:0 0 20px #00ff88;
-  transition:0.4s;
-  position:relative;
-  overflow:hidden;
-}
-.project-card::before{
-  content:"";
-  position:absolute;
-  top:0; left:-100%;
-  width:100%;
-  height:100%;
-  background:linear-gradient(120deg,#00ff88,#00ffff,#ff00ff,#00ff88);
-  transform:skewX(-20deg);
-  transition:0.7s;
-}
-.project-card:hover::before{
-  left:200%;
-}
-.project-card img{
-  width:100%;
-  border-radius:10px;
-  margin-bottom:15px;
-  transition:0.4s;
-}
-.project-card:hover img{
-  transform:scale(1.05);
-}
-.project-card h3{margin-bottom:10px;color:#fff;}
-.project-card p{color:#ccc;margin-bottom:10px;}
-.view-btn{
-  text-decoration:none;
-  color:#000;
-  background:#00ff88;
-  padding:10px 20px;
-  border-radius:30px;
-  font-weight:600;
-  display:inline-block;
-  box-shadow:0 0 20px #00ff88,0 0 40px #00ff88;
-  transition:0.3s;
-}
-.view-btn:hover{
-  transform:scale(1.1);
-  box-shadow:0 0 30px #00ff88,0 0 60px #00ff88;
-}
 /* RESET */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;scroll-behavior:smooth;}
-body{background:#000;color:white;overflow-x:hidden;cursor:none;}
+body{background:#000;color:white;overflow:hidden;cursor:none;}
 
 /* GLASS NAVBAR */
 header{
@@ -96,24 +48,68 @@ canvas{position:fixed;top:0;left:0;z-index:-1;}
 .glow:hover{transform:rotateY(15deg) rotateX(10deg);}
 .glow::before{content:"";position:absolute;width:100%;height:100%;border-radius:50%;background:conic-gradient(#00ff88,transparent,#00ff88);animation:spin 3s linear infinite;filter:blur(25px);}
 .glow img{width:280px;height:280px;border-radius:50%;position:absolute;top:20px;left:20px;object-fit:cover;}
-@keyframes spin{100%{transform:rotate(360deg);}}
+@keyframes spin{100%{transform:rotate(360deg);} }
 @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-20px);}}
 
 /* CURSOR GLOW */
 .cursor{position:fixed;width:20px;height:20px;border-radius:50%;background:#00ff88;box-shadow:0 0 20px #00ff88,0 0 40px #00ff88;pointer-events:none;transform:translate(-50%,-50%);z-index:2000;}
 
-/* SECTIONS */
-section{padding:100px 50px;}
+/* PAGE CONTAINER */
+.page-container{
+  perspective:1500px;
+  position:relative;
+  width:100%;
+  min-height:100vh;
+}
+.page{
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0; left:0;
+  opacity:0;
+  transform:rotateY(90deg) scale(0.9);
+  transform-origin:center;
+  transition:all 0.8s ease-in-out;
+  pointer-events:none;
+}
+.page.active{
+  opacity:1;
+  transform:rotateY(0deg) scale(1);
+  pointer-events:auto;
+  box-shadow:0 0 50px #00ff88;
+}
+
+/* HEADINGS */
 h2{color:#00ff88;text-align:center;margin-bottom:50px;font-size:36px;}
 
 /* PROJECTS */
 .projects-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;max-width:1200px;margin:0 auto;}
-.project-card{background:#0d1a21;padding:20px;border-radius:15px;box-shadow:0 0 20px #00ff88;transition:0.3s;}
-.project-card:hover{transform:translateY(-10px);box-shadow:0 0 30px #00ff88,0 0 50px #00ff88;}
-.project-card img{width:100%;border-radius:10px;margin-bottom:15px;}
+.project-card{
+  background:#0d1a21;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 0 20px #00ff88;
+  transition:0.4s;
+  position:relative;
+  overflow:hidden;
+}
+.project-card::before{
+  content:"";
+  position:absolute;
+  top:0; left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(120deg,#00ff88,#00ffff,#ff00ff,#00ff88);
+  transform:skewX(-20deg);
+  transition:0.7s;
+}
+.project-card:hover::before{ left:200%; }
+.project-card img{ width:100%; border-radius:10px; margin-bottom:15px; transition:0.4s; }
+.project-card:hover img{ transform:scale(1.05); }
 .project-card h3{margin-bottom:10px;color:#fff;}
 .project-card p{color:#ccc;margin-bottom:10px;}
-.project-card a{text-decoration:none;color:#00ff88;font-weight:600;}
+.view-btn{ text-decoration:none; color:#000; background:#00ff88; padding:10px 20px; border-radius:30px; font-weight:600; display:inline-block; box-shadow:0 0 20px #00ff88,0 0 40px #00ff88; transition:0.3s; }
+.view-btn:hover{ transform:scale(1.1); box-shadow:0 0 30px #00ff88,0 0 60px #00ff88; }
 
 /* SERVICES */
 .services-container{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;max-width:1000px;margin:0 auto;}
@@ -147,26 +143,28 @@ h2{color:#00ff88;text-align:center;margin-bottom:50px;font-size:36px;}
 <header>
   <div class="logo">GAYATHRI BOTTA</div>
   <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+    <a href="#" data-target="home">Home</a>
+    <a href="#" data-target="about">About</a>
+    <a href="#" data-target="services">Services</a>
+    <a href="#" data-target="projects">Projects</a>
+    <a href="#" data-target="contact">Contact</a>
   </nav>
 </header>
 
-<!-- HERO SECTION -->
-<section id="home" class="hero">
+<div class="page-container">
+
+<!-- HERO -->
+<section id="home" class="page active hero">
   <div class="content">
-    <h1 class="hero-title">Hello, I'm <span>Gayathri</span></h1>
+    <h1>Hello, I'm <span>Gayathri</span></h1>
     <div class="typing" id="typing"></div>
-    <p>I create <span>modern, interactive, 3D websites</span> with glowing effects and smooth animations.</p>
+    <p>I am a <span>student and enthusiastic web developer</span> passionate about creating modern, interactive, 3D websites with smooth animations and glowing UI designs.</p>
     <div class="social">
-      <a href="https://www.linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://www.instagram.com/yourusername" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.instagram.com/yourprofile" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://github.com/yourprofile" target="_blank"><i class="fab fa-github"></i></a>
     </div>
-    <a href="#projects" class="btn">Explore Projects</a>
+    <a href="#" data-target="projects" class="btn">Explore Projects</a>
   </div>
   <div class="image">
     <div class="glow">
@@ -175,16 +173,33 @@ h2{color:#00ff88;text-align:center;margin-bottom:50px;font-size:36px;}
   </div>
 </section>
 
-<!-- ABOUT SECTION -->
-<section id="about">
+<!-- ABOUT -->
+<section id="about" class="page">
   <h2>About Me</h2>
-  <p style="max-width:800px;margin:0 auto;text-align:center;color:#ccc;">
-    I am a creative frontend developer and UI designer. I build interactive 3D websites, smooth animations, and modern landing pages with glowing effects.
-  </p>
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:40px;max-width:1000px;margin:0 auto;">
+    <div class="image">
+      <div class="glow" style="width:220px;height:220px;">
+        <img src="profile.png" alt="Profile" style="width:180px;height:180px;">
+      </div>
+    </div>
+    <div style="max-width:500px;color:#ccc;">
+      <p>
+        Hi! I am <strong>Gayathri Botta</strong>, a passionate student of web development.
+        I love learning new technologies and building <span style="color:#00ff88;">interactive 3D websites</span>
+        and modern UI designs. I am enthusiastic, creative, and always eager to explore the latest trends in web development.
+      </p>
+      <div class="social" style="margin-top:20px;">
+        <a href="https://www.linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/yourprofile" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://github.com/yourprofile" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+      <a href="resume.pdf" download class="btn" style="margin-top:20px;display:inline-block;">Download Resume</a>
+    </div>
+  </div>
 </section>
 
 <!-- SERVICES -->
-<section id="services">
+<section id="services" class="page">
   <h2>My Services</h2>
   <div class="services-container">
     <div class="service-card"><i class="fas fa-code"></i><h4>Web Development</h4></div>
@@ -195,32 +210,32 @@ h2{color:#00ff88;text-align:center;margin-bottom:50px;font-size:36px;}
 </section>
 
 <!-- PROJECTS -->
-<section id="projects">
+<section id="projects" class="page">
   <h2>My Projects</h2>
   <div class="projects-container">
     <div class="project-card">
-      <img src="https://via.placeholder.com/300x150" alt="Project 1">
-      <h3>Project One</h3>
-      <p>Interactive web app with animations.</p>
-      <a href="#">View Project</a>
+      <img src="chatbot-preview.png" alt="Chatbot Project">
+      <h3>Interactive Chatbot</h3>
+      <p>A smart AI-powered chatbot with chat history, typing indicators, and PDF-based answers.</p>
+      <a href="b4631587-4eeb-4530-9397-9ffebd3e7b93.html" target="_blank" class="view-btn">View Project</a>
     </div>
     <div class="project-card">
-      <img src="https://via.placeholder.com/300x150" alt="Project 2">
-      <h3>Project Two</h3>
-      <p>3D Portfolio website with glowing effects.</p>
-      <a href="#">View Project</a>
+      <img src="portfolio-preview.png" alt="Portfolio Project">
+      <h3>3D Portfolio Website</h3>
+      <p>A fully interactive portfolio with glowing animations, 3D effects, and smooth transitions.</p>
+      <a href="portfolio.html" target="_blank" class="view-btn">View Project</a>
     </div>
     <div class="project-card">
-      <img src="https://via.placeholder.com/300x150" alt="Project 3">
-      <h3>Project Three</h3>
-      <p>Modern interactive landing page design.</p>
-      <a href="#">View Project</a>
+      <img src="plant-watering-preview.png" alt="Smart Plant Watering Project">
+      <h3>Smart Plant Watering System</h3>
+      <p>Automatic plant watering system using soil moisture sensors and IoT for smart gardening.</p>
+      <a href="plant-watering.html" target="_blank" class="view-btn">View Project</a>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
+<section id="contact" class="page">
   <h2>Contact Me</h2>
   <form class="contact-form">
     <input type="text" placeholder="Your Name" required>
@@ -230,8 +245,10 @@ h2{color:#00ff88;text-align:center;margin-bottom:50px;font-size:36px;}
   </form>
 </section>
 
+</div>
+
 <script>
-/* TYPING */
+// Typing animation
 const words=["Frontend Developer","UI Designer","Creative Coder"];
 let i=0,j=0,current="",deleting=false;
 const typing=document.getElementById("typing");
@@ -241,20 +258,20 @@ function type(){
     typing.textContent=current.substring(0,j--);
     if(j<0){deleting=false;i=(i+1)%words.length;}
   }else{
-    typing.textContent=current.substring(0,j++);
+    typing.textContent=current.substring(0,j++); 
     if(j>current.length){deleting=true;}
   }
   setTimeout(type,deleting?80:120);
 }
 type();
 
-/* PARTICLES */
+// Particles
 const canvas=document.getElementById("particles");
 const ctx=canvas.getContext("2d");
 canvas.width=window.innerWidth;
 canvas.height=window.innerHeight;
 let particles=[];
-for(let i=0;i<80;i++){
+for(let k=0;k<80;k++){
   particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,size:Math.random()*3,speedX:(Math.random()-0.5),speedY:(Math.random()-0.5)});
 }
 function animate(){
@@ -271,22 +288,21 @@ function animate(){
 animate();
 window.addEventListener("resize",()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
 
-/* CURSOR */
+// Cursor
 const cursor=document.querySelector(".cursor");
 document.addEventListener("mousemove",(e)=>{cursor.style.left=e.pageX+"px";cursor.style.top=e.pageY+"px";});
 
-/* SCROLL REVEAL */
-const sections = document.querySelectorAll("section");
-function revealSections(){
-  const triggerBottom = window.innerHeight/5*4;
-  sections.forEach(section => {
-    const sectionTop = section.getBoundingClientRect().top;
-    if(sectionTop<triggerBottom){section.classList.add("visible");}
+// Page Flip Navigation
+const navLinks=document.querySelectorAll("header nav a, .btn[data-target]");
+const pages=document.querySelectorAll(".page");
+navLinks.forEach(link=>{
+  link.addEventListener("click",(e)=>{
+    e.preventDefault();
+    const targetId=link.getAttribute("data-target");
+    pages.forEach(p=>p.classList.remove("active"));
+    document.getElementById(targetId).classList.add("active");
   });
-}
-window.addEventListener("scroll",revealSections);
-window.addEventListener("load",revealSections);
+});
 </script>
-
 </body>
 </html>
