@@ -77,3 +77,9 @@ window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 });
+const textArray = [
+  "Full Stack Web Developer",
+  "Frontend Enthusiast",
+  "JavaScript Learner",
+  "Creative UI Designer"
+];
