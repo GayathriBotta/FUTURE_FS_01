@@ -10,6 +10,51 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
 <style>
+  /* Glowing Rotating Circle */
+.glow-container {
+  position: relative;
+  width: 230px;
+  height: 230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glow-container::before {
+  content: "";
+  position: absolute;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  background: conic-gradient(#00ff88, #00c3ff, #ff00cc, #00ff88);
+  animation: rotateGlow 4s linear infinite;
+  z-index: 0;
+}
+
+.glow-container::after {
+  content: "";
+  position: absolute;
+  width: 210px;
+  height: 210px;
+  background: #111; /* background color of your site */
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.glow-container img {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  object-fit: cover;
+  z-index: 2;
+}
+
+/* Rotation Animation */
+@keyframes rotateGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
   /* ABOUT LAYOUT */
 .about-wrapper{
   display:flex;
@@ -328,10 +373,9 @@ h2{color:#00ff88;text-align:center;margin-bottom:50px;font-size:36px;}
   <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:40px;max-width:1000px;margin:0 auto;">
 
     <!-- Profile Image -->
-    <div>
-      <img src="profile.jpeg" alt="Gayathri Botta"
-           style="width:220px;height:220px;border-radius:50%;object-fit:cover;border:3px solid #00ff88;">
-    </div>
+   <div class="glow-container">
+  <img src="profile.png" alt="Gayathri Botta">
+</div>
 
     <!-- About Content -->
     <div style="max-width:550px;line-height:1.8;color:#ccc;font-size:16px;">
